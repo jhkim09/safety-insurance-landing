@@ -55,21 +55,23 @@ const NavItem = styled.li`
 `;
 
 const NavLink = styled.a<{ isScrolled: boolean }>`
-  font-weight: 500;
+  font-weight: 600;
   color: ${props => props.isScrolled ? theme.colors.text.primary : 'white'};
   padding: 0.5rem 1rem;
   border-radius: ${theme.borderRadius.md};
   transition: all 0.3s ease;
   position: relative;
+  text-shadow: ${props => props.isScrolled ? 'none' : '0 1px 2px rgba(0,0,0,0.3)'};
   
   &:hover {
-    color: ${theme.colors.primary.main};
-    background: rgba(30, 64, 175, 0.1);
+    color: ${props => props.isScrolled ? theme.colors.primary.main : '#FFD700'};
+    background: ${props => props.isScrolled ? 'rgba(30, 64, 175, 0.1)' : 'rgba(255, 255, 255, 0.15)'};
+    transform: translateY(-1px);
   }
   
   &.active {
-    color: ${theme.colors.primary.main};
-    font-weight: 600;
+    color: ${props => props.isScrolled ? theme.colors.primary.main : '#FFD700'};
+    font-weight: 700;
   }
 `;
 
@@ -93,9 +95,11 @@ const MobileMenuButton = styled.button<{ isScrolled: boolean }>`
   padding: 0.5rem;
   border-radius: ${theme.borderRadius.md};
   transition: all 0.3s ease;
+  text-shadow: ${props => props.isScrolled ? 'none' : '0 1px 2px rgba(0,0,0,0.3)'};
   
   &:hover {
-    background: rgba(30, 64, 175, 0.1);
+    background: ${props => props.isScrolled ? 'rgba(30, 64, 175, 0.1)' : 'rgba(255, 255, 255, 0.15)'};
+    transform: scale(1.05);
   }
   
   @media (max-width: ${theme.breakpoints.md}) {
