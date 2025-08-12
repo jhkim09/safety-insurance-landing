@@ -371,6 +371,8 @@ const ContactSection: React.FC = () => {
       console.log('EmailJS 전송 시도:', templateParams);
       const result = await emailjs.send(serviceId, templateId, templateParams, publicKey);
       console.log('EmailJS 전송 성공:', result);
+      // 성공 알림도 추가
+      alert('이메일이 성공적으로 전송되었습니다!');
       
       setIsLoading(false);
       setIsSubmitted(true);
@@ -392,7 +394,8 @@ const ContactSection: React.FC = () => {
     } catch (error) {
       console.error('이메일 전송 실패:', error);
       setIsLoading(false);
-      alert('문의 전송에 실패했습니다. 다시 시도해주세요.');
+      // 에러 상세 정보를 브라우저 알림으로 표시
+      alert(`이메일 전송 실패: ${error instanceof Error ? error.message : '알 수 없는 오류'}`);
     }
   };
 
