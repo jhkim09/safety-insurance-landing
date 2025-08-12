@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { HiPhone, HiMail, HiLocationMarker, HiClock, HiCheckCircle } from 'react-icons/hi';
+import emailjs from '@emailjs/browser';
 import { theme } from '../styles/theme';
 
 const ContactContainer = styled.section`
@@ -348,8 +349,26 @@ const ContactSection: React.FC = () => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // EmailJS 서비스 설정 (아래 값들을 실제 EmailJS 설정값으로 변경 필요)
+      const serviceId = 'YOUR_SERVICE_ID';
+      const templateId = 'YOUR_TEMPLATE_ID';  
+      const publicKey = 'YOUR_PUBLIC_KEY';
+      
+      const templateParams = {
+        to_name: '안전성평가 보장보험',
+        from_name: formData.name,
+        from_company: formData.company,
+        from_phone: formData.phone,
+        from_email: formData.email,
+        employees_count: formData.employees,
+        service_type: formData.service,
+        message: formData.message,
+        submit_time: new Date().toLocaleString('ko-KR')
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
       setIsLoading(false);
       setIsSubmitted(true);
       
@@ -367,7 +386,11 @@ const ContactSection: React.FC = () => {
           privacy: false
         });
       }, 3000);
-    }, 2000);
+    } catch (error) {
+      console.error('이메일 전송 실패:', error);
+      setIsLoading(false);
+      alert('문의 전송에 실패했습니다. 다시 시도해주세요.');
+    }
   };
 
   return (
