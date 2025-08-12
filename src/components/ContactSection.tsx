@@ -601,6 +601,10 @@ const ContactSection: React.FC = () => {
                 <SubmitButton type="submit" isLoading={isLoading}>
                   {isLoading ? '전송 중...' : '상담 신청하기'}
                 </SubmitButton>
+                
+                <button type="button" onClick={() => alert('코드 업데이트 확인!')} style={{marginTop: '10px', padding: '10px', background: 'red', color: 'white'}}>
+                  테스트 버튼 - 이게 보이면 코드 반영됨
+                </button>
               </Form>
             )}
           </FormSection>
