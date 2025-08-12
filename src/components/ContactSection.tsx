@@ -378,8 +378,6 @@ const ContactSection: React.FC = () => {
       console.log('EmailJS 전송 시도:', templateParams);
       const result = await emailjs.send(serviceId, templateId, templateParams, publicKey);
       console.log('EmailJS 전송 성공:', result);
-      // 성공 알림도 추가
-      alert('이메일이 성공적으로 전송되었습니다!');
       
       setIsLoading(false);
       setIsSubmitted(true);
@@ -410,7 +408,7 @@ const ContactSection: React.FC = () => {
     <ContactContainer id="contact">
       <Container>
         <SectionHeader>
-          <Badge>Contact - 업데이트확인!</Badge>
+          <Badge>Contact</Badge>
           <SectionTitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -602,9 +600,6 @@ const ContactSection: React.FC = () => {
                   {isLoading ? '전송 중...' : '상담 신청하기'}
                 </SubmitButton>
                 
-                <button type="button" onClick={() => alert('코드 업데이트 확인!')} style={{marginTop: '10px', padding: '10px', background: 'red', color: 'white'}}>
-                  테스트 버튼 - 이게 보이면 코드 반영됨
-                </button>
               </Form>
             )}
           </FormSection>
