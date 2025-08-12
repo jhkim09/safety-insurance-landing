@@ -410,7 +410,7 @@ const ContactSection: React.FC = () => {
     <ContactContainer id="contact">
       <Container>
         <SectionHeader>
-          <Badge>Contact</Badge>
+          <Badge>Contact - 업데이트확인!</Badge>
           <SectionTitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
