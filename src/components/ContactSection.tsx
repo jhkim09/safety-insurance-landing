@@ -348,6 +348,13 @@ const ContactSection: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('폼 제출 시작', formData);
+    
+    // 폼 검증
+    if (!formData.name || !formData.company || !formData.phone || !formData.email || !formData.privacy) {
+      alert('필수 항목을 모두 입력하고 개인정보 동의를 체크해주세요.');
+      return;
+    }
+    
     setIsLoading(true);
     
     try {
