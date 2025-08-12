@@ -347,6 +347,7 @@ const ContactSection: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('폼 제출 시작', formData);
     setIsLoading(true);
     
     try {
@@ -367,7 +368,9 @@ const ContactSection: React.FC = () => {
         submit_time: new Date().toLocaleString('ko-KR')
       };
 
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      console.log('EmailJS 전송 시도:', templateParams);
+      const result = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      console.log('EmailJS 전송 성공:', result);
       
       setIsLoading(false);
       setIsSubmitted(true);
