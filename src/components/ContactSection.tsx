@@ -350,10 +350,10 @@ const ContactSection: React.FC = () => {
     setIsLoading(true);
     
     try {
-      // EmailJS 서비스 설정 (아래 값들을 실제 EmailJS 설정값으로 변경 필요)
-      const serviceId = 'YOUR_SERVICE_ID';
-      const templateId = 'YOUR_TEMPLATE_ID';  
-      const publicKey = 'YOUR_PUBLIC_KEY';
+      // EmailJS 서비스 설정
+      const serviceId = 'service_hfco0vj';
+      const templateId = 'template_q17cb1c';  
+      const publicKey = 'M9SDfmVeOZw9z_PvM';
       
       const templateParams = {
         to_name: '안전성평가 보장보험',
