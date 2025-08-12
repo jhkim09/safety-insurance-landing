@@ -25,16 +25,24 @@ const NavContainer = styled.div`
   align-items: center;
 `;
 
-const Logo = styled.div`
+const Logo = styled.div<{ isScrolled: boolean }>`
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 1.5rem;
   font-weight: 700;
-  color: ${theme.colors.primary.main};
+  color: ${props => props.isScrolled ? theme.colors.primary.main : 'white'};
+  text-shadow: ${props => props.isScrolled ? 'none' : '0 0 8px rgba(255,255,255,0.8), 0 0 12px rgba(255,255,255,0.6)'};
+  transition: all 0.3s ease;
   
   svg {
     font-size: 2rem;
+    filter: ${props => props.isScrolled ? 'none' : 'drop-shadow(0 0 4px rgba(255,255,255,0.8))'};
+    transition: all 0.3s ease;
+  }
+  
+  &:hover {
+    transform: scale(1.05);
   }
 `;
 
@@ -198,7 +206,7 @@ const Navigation: React.FC = () => {
       transition={{ duration: 0.3 }}
     >
       <NavContainer>
-        <Logo>
+        <Logo isScrolled={isScrolled}>
           <HiShieldCheck />
           <span>SafetyPro</span>
         </Logo>
